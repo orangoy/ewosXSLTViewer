@@ -145,6 +145,43 @@ $(document).ready(function () {
             "decimal": ".",
             "thousands": ""
         },
+        "footerCallback": function (row, data, start, end, display) {
+            var api = this.api(), data;
+            // Remove the formatting to get integer data for summation
+            var intVal = function (i) {
+                return typeof i === 'string' ?
+                    i.replace(/[\, ]/g, '') * 1 :
+                    typeof i === 'number' ?
+                        i : 0;
+            };
+
+            var Temp = api.column(2).data();
+            avgTemp = Temp.reduce(function (a, b) {
+                return intVal(a) + intVal(b);
+            }, 0) / Temp.length;
+
+
+            var Oxy = api.column(3).data();
+            avgOxy = Oxy.reduce(function (a, b) {
+                return intVal(a) + intVal(b);
+            }, 0) / Oxy.length;
+
+            countWs = api
+                .column(5)
+                .data()
+                .reduce(function (a, b) {
+                    console.log(b);
+                    if(b === "true") return intVal(a) + 1;
+                    else return intVal(a);
+                }, 0);
+
+            // Update footer
+            $(api.column(2).footer()).html(avgTemp.toLocaleString(undefined, { maximumFractionDigits: 2}));
+            $(api.column(3).footer()).html(avgOxy.toLocaleString(undefined, { maximumFractionDigits: 2}));
+            $(api.column(5).footer()).html(countWs.toLocaleString());
+        },
+
+
         "columnDefs": [
             {
                 targets: [0, 1],

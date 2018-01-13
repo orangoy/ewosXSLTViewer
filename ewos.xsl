@@ -285,12 +285,13 @@
                                                      </thead>
                                                      <tfoot>
                                                          <tr>
-                                                             <th colspan="3" class="text-right">
-                                                                 Sum shown:<br/>
-                                                                 Sum in search:<br/>
-                                                                 Sum total:
+                                                             <th colspan="2" class="text-right">
+                                                                 Average:
                                                              </th>
-                                                             <th colspan="3"> </th>
+                                                             <th></th>
+                                                             <th></th>
+                                                             <th>Count:</th>
+                                                             <th></th>
                                                          </tr>
                                                      </tfoot>
                                                      <tbody>

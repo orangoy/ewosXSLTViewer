@@ -76,8 +76,16 @@
                             </xsl:for-each>
                             </tbody>
                             </table>
+                            <ul class="nav nav-tabs">
+                            <xsl:for-each select="Groups/Group">
+                                    <li><a data-toggle="tab" href="#{generate-id(GroupID)}"><xsl:value-of select="UnitName"/></a></li>
+                            </xsl:for-each>
+                            </ul>
                             <!-- Groups and periods : -->
+                            <div class="tab-content">
                               <xsl:for-each select="Groups/Group">
+                                  <div id="{generate-id(GroupID)}" class="tab-pane fade in">
+
                                   <div class="group">
                                 <div class="unit_name"><xsl:value-of select="UnitName"/></div>
                                 <div class="unit_volume"><xsl:value-of select="UnitVolume"/></div>
@@ -149,7 +157,10 @@
                                 </xsl:for-each>
                                     </tbody>
                                 </table>
-                            </xsl:for-each>
+                                </div>
+
+                              </xsl:for-each>
+                            </div>
                         </xsl:for-each>
                 </xsl:for-each>
             </xsl:for-each>

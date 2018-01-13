@@ -1,5 +1,3 @@
-
-
 $(document).ready(function () {
     $('.qualitysamples').DataTable({
         "dom": 'Bfrtip',
@@ -13,16 +11,17 @@ $(document).ready(function () {
     });
     $('.qualitysamples').show();
     $('.feedtable').DataTable({
+        "pageLength": 5,
+        "lengthMenu": [[5,10, 25, 50, -1], [5,10, 25, 50, "All"]],
         "dom": 'Bfrtip',
         "buttons": [
+            'pageLength',
             'copy', 'csv',
             {
                 extend: 'excel',
                 title: 'Feeding'
             }
         ],
-        "order": [[1, "desc"]],
-        "autoWidth": false,
         "footerCallback": function (row, data, start, end, display) {
             var api = this.api(), data;
 
@@ -80,6 +79,7 @@ $(document).ready(function () {
     $('.periods').DataTable({
         "dom": 'Bfrtip',
         "buttons": [
+            'pageLength',
             'copy', 'csv',
             {
                 extend: 'excel',
@@ -116,6 +116,7 @@ $(document).ready(function () {
     $('.envtable').DataTable({
         "dom": 'Bfrtip',
         "buttons": [
+            'pageLength',
             'copy', 'csv',
             {
                 extend: 'excel',
@@ -123,7 +124,7 @@ $(document).ready(function () {
             }
         ],
         "pageLength": 5,
-        "lengthMenu": [[5,10, 25, 50, -1], [5,10, 25, 50, "All"]],
+        "lengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
         "language": {
             "decimal": ".",
             "thousands": ""

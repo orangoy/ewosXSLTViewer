@@ -5,10 +5,10 @@ Data exported from Aquaculture management systems in the Ewos XML format can be 
 External javascript/CSS libraries (jQuery, Bootstrap, DataTables with plugins support the styling and provides simple export functionality.
 
 In order to use the stylesheet directly, put the sheet, css and js file in the same directory as the Ewos XML file and add declaration
-to the xml (export) file, like:
+to the begining of the XML export file, like:
 
 ```xml
-?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="ewos.xsl" ?>
 ```
 

@@ -2,11 +2,15 @@ $(document).ready(function () {
     $('.qualitysamples').DataTable({
         "dom": 'Bfrtip',
         "buttons": [
-            'copy', 'csv',
             {
                 extend: 'excel',
                 title: 'Quality Samples'
-            }
+            },
+            {
+                extend: 'csv',
+                title: 'Quality Samples'
+            },
+            'copy'
         ]
     });
     $('.qualitysamples').show();
@@ -16,11 +20,15 @@ $(document).ready(function () {
         "dom": 'Bfrtip',
         "buttons": [
             'pageLength',
-            'copy', 'csv',
             {
                 extend: 'excel',
                 title: 'Feeding'
-            }
+            },
+            {
+                extend: 'csv',
+                title: 'Feeding'
+            },
+            'copy'
         ],
         "footerCallback": function (row, data, start, end, display) {
             var api = this.api(), data;
@@ -80,11 +88,15 @@ $(document).ready(function () {
         "dom": 'Bfrtip',
         "buttons": [
             'pageLength',
-            'copy', 'csv',
             {
                 extend: 'excel',
                 title: 'Biomass per group'
-            }
+            },
+            {
+                extend: 'csv',
+                title: 'Biomass per group'
+            },
+            'copy'
         ],
         "pageLength": 5,
         "lengthMenu": [[5,10, 25, 50, -1], [5,10, 25, 50, "All"]],
@@ -117,11 +129,15 @@ $(document).ready(function () {
         "dom": 'Bfrtip',
         "buttons": [
             'pageLength',
-            'copy', 'csv',
             {
                 extend: 'excel',
                 title: 'Records'
-            }
+            },
+            {
+                extend: 'csv',
+                title: 'Records'
+            },
+            'copy'
         ],
         "pageLength": 5,
         "lengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],

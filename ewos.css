@@ -1,5 +1,9 @@
-div.export {
+.countCols, .kgCols, .tempCols {
+    text-align: right;
+}
 
+div.export {
+    color: lightgrey;
 }
 
 div.export_source {
@@ -19,11 +23,13 @@ div.export_date_time {
 }
 
 div.start_date {
-	display: inline
+	display: inline;
+    color: darkgrey;
 }
 
 div.end_date {
-	display: inline
+	display: inline;
+    color: darkgrey;
 }
 
 div.company {
@@ -69,6 +75,7 @@ div.longitude {
 }
 
 table.qualitysamples {
+    display: none;
 }
 
 td.qsample_group {
@@ -167,6 +174,7 @@ div.strain {
 }
 
 table.periods {
+    font-size: small;
 }
 
 th.first_day {

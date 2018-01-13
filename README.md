@@ -1,8 +1,7 @@
 # ewosXSLTViewer
 XSLT stylesheet to view aquaculture data in the Ewos XML in a web browser
 
-Data exported from Aquaculture management systems in the Ewos XML format can be styled using this sheet. 
-External javascript/CSS libraries (jQuery, Bootstrap, DataTables with plugins support the styling and provides simple export functionality.
+Data exported from Aquaculture management systems in the Ewos XML format can be styled using this sheet.  Tested with file identified as EWOS version 1.3. External javascript/CSS libraries (jQuery, Bootstrap, DataTables with plugins support the styling and provides simple export functionality.
 
 In order to use the stylesheet directly, put the sheet, css and js file in the same directory as the Ewos XML file and add declaration
 to the begining of the XML export file, like:

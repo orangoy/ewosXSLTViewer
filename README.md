@@ -6,8 +6,11 @@ External javascript/CSS libraries (jQuery, Bootstrap, DataTables with plugins su
 
 In order to use the stylesheet directly, put the sheet, css and js file in the same directory as the Ewos XML file and add declaration
 to the xml (export) file, like:
+
+```xml
 ?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="ewos.xsl" ?>
+```
 
 Then open the Ewos XML (not the xsl) in an XSLT-enabled web browser. 
 NB: Firefox can display the result this directly from the local file system. 

@@ -174,37 +174,61 @@
                                         <tr>
                                             <th class="first_day">Period start</th>
                                             <th class="last_day">Period end</th>
-                                            <th class="end_stock_count">End stock count</th>
-                                            <th class="end_stock_biomass">End stock biomass</th>
                                             <th class="stocked_count">Stocked count</th>
                                             <th class="stocked_biomass">Stocked biomass</th>
-                                            <th class="movedout_count">Moved out count</th>
-                                            <th class="movedout_biomass">Moved out biomass</th>
                                             <th class="movedin_count">Moved in count</th>
                                             <th class="movedin_biomass">Moved in biomass</th>
+                                            <th class="movedout_count">Moved out count</th>
+                                            <th class="movedout_biomass">Moved out biomass</th>
                                             <th class="loss_count">Loss count</th>
                                             <th class="loss_biomass">Loss biomass</th>
                                             <th class="sold_count">Sold count</th>
                                             <th class="sold_biomass">Sold biomass</th>
+                                            <th class="harvested_count">Harvested count</th>
+                                            <th class="harvested_biomass">Harvested biomass</th>
+                                            <th class="end_stock_count">End stock count</th>
+                                            <th class="end_stock_biomass">End stock biomass</th>
                                         </tr>
                                     </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th colspan="2"></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+
+                                        </tr>
+                                    </tfoot>
                                     <tbody>
                                 <xsl:for-each select="Periods/Period">
                                   <tr>
                                     <td class="first_day"><xsl:value-of select="FirstDay"/></td>
                                     <td class="last_day"><xsl:value-of select="LastDay"/></td>
-                                    <td class="end_stock_count"><xsl:value-of select="EndStock/IndividCount"/></td>
-                                    <td class="end_stock_biomass"><xsl:value-of select="EndStock/Biomass"/></td>
                                       <td class="stocked_count"><xsl:value-of select="Stocked/IndividCount"/></td>
                                       <td class="stocked_biomass"><xsl:value-of select="Stocked/Biomass"/></td>
-                                      <td class="movedout_count"><xsl:value-of select="MovedOut/IndividCount"/></td>
-                                      <td class="movedout_biomass"><xsl:value-of select="MoveOut/Biomass"/></td>
                                       <td class="movedin_count"><xsl:value-of select="MovedIn/IndividCount"/></td>
                                       <td class="movedin_biomass"><xsl:value-of select="MovedIn/Biomass"/></td>
+                                      <td class="movedout_count"><xsl:value-of select="sum(MovedOut/TransferDetail/StockTransferred/IndividCount)"/></td>
+                                      <td class="movedout_biomass"><xsl:value-of select="sum(MovedOut/TransferDetail/StockTransferred/Biomass)"/></td>
                                       <td class="loss_count"><xsl:value-of select="Loss/IndividCount"/></td>
                                       <td class="loss_biomass"><xsl:value-of select="Loss/Biomass"/></td>
                                       <td class="sold_count"><xsl:value-of select="Sold/IndividCount"/></td>
                                       <td class="sold_biomass"><xsl:value-of select="Sold/Biomass"/></td>
+                                      <td class="harvested_count"><xsl:value-of select="sum(Harvested/HarvestDetail/IndividCount)"/></td>
+                                      <td class="harvested_biomass"><xsl:value-of select="sum(Harvested/HarvestDetail/GrossBiomass)"/></td>
+                                      <td class="end_stock_count"><xsl:value-of select="EndStock/IndividCount"/></td>
+                                      <td class="end_stock_biomass"><xsl:value-of select="EndStock/Biomass"/></td>
                                   </tr>
                                 </xsl:for-each>
                                     </tbody>

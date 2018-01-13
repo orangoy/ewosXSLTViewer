@@ -64,9 +64,9 @@ $(document).ready(function () {
 
             // Update footer
             $(api.column(3).footer()).html(
-                pageTotalFeed.toLocaleString() + '<br/>' +
-                pageFilteredFeed.toLocaleString() + '<br/>' +
-                totalFeed.toLocaleString()
+                pageTotalFeed.toLocaleString(undefined, { maximumFractionDigits: 2}) + '<br/>' +
+                pageFilteredFeed.toLocaleString(undefined, { maximumFractionDigits: 2}) + '<br/>' +
+                totalFeed.toLocaleString(undefined, { maximumFractionDigits: 2})
             );
         },
         "columnDefs": [
@@ -104,6 +104,26 @@ $(document).ready(function () {
             "decimal": ".",
             "thousands": ""
         },
+        "footerCallback": function (row, data, start, end, display) {
+            var api = this.api(), data;
+            // Remove the formatting to get integer data for summation
+            var intVal = function (i) {
+                return typeof i === 'string' ?
+                    i.replace(/[\, ]/g, '') * 1 :
+                    typeof i === 'number' ?
+                        i : 0;
+            };
+            var counts = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+            var countCount= counts.length;
+            for (var i = 2; i < countCount; i++) {
+                $(api.column(i).footer()).html(
+                    api.column(i).data()
+                        .reduce(function (a, b) {
+                            return intVal(a) + intVal(b);
+                        }, 0).toLocaleString(undefined, { maximumFractionDigits: 2})
+                );
+            }
+        },
         "columnDefs": [
             {
                 targets: [0, 1],
@@ -111,18 +131,18 @@ $(document).ready(function () {
                 className: 'dateCols'
             },
             {
-                targets: [2, 4, 6, 8, 10, 12],
+                targets: [2, 4, 6, 8, 10, 12,14],
                 type: "num-fmt",
                 render: $.fn.dataTable.render.number(' ', ',', 0),
                 className: 'countCols'
             },
             {
-                targets: [3, 5, 7, 9, 11, 13],
+                targets: [3, 5, 7, 9, 11, 13, 15],
                 type: "num-fmt",
                 render: $.fn.dataTable.render.number(' ', ',', 0),
                 className: 'kgCols'
+            },
 
-            }
         ]
     });
     $('.envtable').DataTable({

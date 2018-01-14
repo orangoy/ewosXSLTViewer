@@ -14,6 +14,45 @@ $(document).ready(function () {
         ]
     });
     $('.qualitysamples').show();
+    $('.transfertable').DataTable({
+        "pageLength": 5,
+        "lengthMenu": [[5,10, 25, 50, -1], [5,10, 25, 50, "All"]],
+        "dom": 'Bfrtip',
+        "buttons": [
+            'pageLength',
+            {
+                extend: 'excel',
+                title: 'Feeding'
+            },
+            {
+                extend: 'csv',
+                title: 'Feeding'
+            },
+            'copy'
+        ],
+        "columnDefs": [
+            {
+                targets: [0],
+                render: $.fn.dataTable.render.moment('YYYY-MM-DD', 'DD.MM.YY'),
+                className: 'dateCols'
+            },
+            {
+                targets: [5],
+                type: "num-fmt",
+                render: $.fn.dataTable.render.number(' ', ',', 0),
+                className: 'countCols'
+            },
+            {
+                targets: [6],
+                type: "num-fmt",
+                render: $.fn.dataTable.render.number(' ', ',', 0),
+                className: 'kgCols'
+            }
+
+        ]
+
+    });
+
     $('.feedtable').DataTable({
         "pageLength": 5,
         "lengthMenu": [[5,10, 25, 50, -1], [5,10, 25, 50, "All"]],
@@ -190,7 +229,6 @@ $(document).ready(function () {
                 .column(5)
                 .data()
                 .reduce(function (a, b) {
-                    console.log(b);
                     if(b === "true") return intVal(a) + 1;
                     else return intVal(a);
                 }, 0);

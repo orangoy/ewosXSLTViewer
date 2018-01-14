@@ -60,6 +60,11 @@
                              <hr/>
                           </div>
                             <div class="btn-group" role="group" aria-label="Buttons">
+                                <xsl:if test="Groups/Group/Periods/Period/MovedOut/TransferDetail">
+                                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#transfer_collapse{generate-id(SiteID)}" aria-expanded="false" aria-controls="transfer_collapse{generate-id(SiteID)}">
+                                    Transfers
+                                </button>
+                                </xsl:if>
                                 <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#group_collapse{generate-id(SiteID)}" aria-expanded="false" aria-controls="group_collapse{generate-id(SiteID)}">
                                     Biomass
                                 </button>
@@ -129,6 +134,48 @@
                                 </div>
                             </xsl:if>
                             <!-- Groups and periods : -->
+
+                             <div class="collapse" id="transfer_collapse{generate-id(SiteID)}">
+                                 <div class="card card-block">
+                                     <h4>Transfers</h4>
+                                     <table class="transfertable">
+                                         <thead>
+                                             <tr>
+                                                 <th class="to_site_id">Period end date</th>
+                                                 <th class="to_site_id">From site name (ID)</th>
+                                                 <th class="to_site_id">From group  / unit (ID)</th>
+                                                 <th class="to_site_id">To site ID</th>
+                                                 <th class="to_group_id">To group / unit (ID)</th>
+                                                 <th class="transferred_individcount">Individ count transferred</th>
+                                                 <th class="transferred_biomass">Biomass transferred</th>
+                                                 <th class="transferred_individcount">Individ count after transfer</th>
+                                                 <th class="transferred_biomass">Biomass after transfer</th>
+                                             </tr>
+                                         </thead>
+                                         <tfoot>
+                                             <tr>
+                                                 <th colspan="9"></th>
+                                             </tr>
+                                         </tfoot>
+                                         <tbody>
+                                             <xsl:for-each select="Groups/Group/Periods/Period/MovedOut/TransferDetail">
+                                                 <tr>
+                                                     <td><xsl:value-of select="../../LastDay"/></td>
+                                                     <td><xsl:value-of select="../../../../../../SiteName"/> (<xsl:value-of select="../../../../../../SiteID"/>)</td>
+                                                     <td><xsl:value-of select="../../../../GroupName"/> <xsl:value-of select="../../../../UnitName"/> (<xsl:value-of select="../../../../GroupID"/>)</td>
+                                                     <td><xsl:value-of select="ToSiteID"/></td>
+                                                     <td><xsl:value-of select="ToUnitName"/> (<xsl:value-of select="ToGroupID"/>)</td>
+                                                     <td><xsl:value-of select="StockTransferred/IndividCount"/></td>
+                                                     <td><xsl:value-of select="StockTransferred/Biomass"/></td>
+                                                     <td><xsl:value-of select="../../EndStock/IndividCount"/></td>
+                                                     <td><xsl:value-of select="../../EndStock/Biomass"/></td>
+                                                 </tr>
+                                             </xsl:for-each>
+                                         </tbody>
+                                     </table>
+                                 </div>
+                             </div>
+
                             <div class="collapse" id="group_collapse{generate-id(SiteID)}">
                             <div class="card card-block">
                             <h4>Biomass per group</h4>
@@ -207,7 +254,6 @@
                                             <th></th>
                                             <th></th>
                                             <th></th>
-
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -238,6 +284,8 @@
                             </div>
                             </div>
                             </div>
+
+
                             <div class="collapse" id="feed_collapse{generate-id(SiteID)}">
                                 <div class="card card-block">
                                     <h4>Feed</h4>

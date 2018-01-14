@@ -89,7 +89,7 @@
                                 <div class="collapse" id="qs_collapse{generate-id(SiteID)}">
                                     <div class="card card-block">
                             <h4>Quality samples</h4>
-                            <table class="qualitysamples">
+                            <table class="qualitysamples stripe">
                             <thead>
                                 <tr>
                                     <th>Group</th>
@@ -138,7 +138,7 @@
                              <div class="collapse" id="transfer_collapse{generate-id(SiteID)}">
                                  <div class="card card-block">
                                      <h4>Transfers</h4>
-                                     <table class="transfertable">
+                                     <table class="transfertable stripe">
                                          <thead>
                                              <tr>
                                                  <th class="to_site_id">Period end date</th>
@@ -181,7 +181,7 @@
                             <h4>Biomass per group</h4>
                             <ul class="nav nav-tabs">
                             <xsl:for-each select="Groups/Group">
-                                    <li><a data-toggle="tab" href="#{generate-id(GroupID)}"><xsl:value-of select="UnitName"/> (<xsl:value-of select="FirstDateOfInput"/>)</a></li>
+                                    <li><a data-toggle="tab" href="#{generate-id(GroupID)}"><xsl:value-of select="UnitName"/> (<xsl:value-of select="GroupID"/>)</a></li>
                             </xsl:for-each>
                             </ul>
                             <div class="tab-content">
@@ -189,10 +189,12 @@
                                   <div id="{generate-id(GroupID)}" class="tab-pane fade in">
 
                                 <div class="group well well-sm">
-                                <div class="unit_name"><h4><b>Unit name: </b><xsl:value-of select="UnitName"/></h4></div>
+                                <h4>
+                                    <div class="unit_name"><b>Unit name: </b><xsl:value-of select="UnitName"/> </div>
+                                    <div class="group_id"><b>Group ID: </b><xsl:value-of select="GroupID"/></div>
+                                </h4>
 
                                 <div class="group_name"><b>Group name: </b><xsl:value-of select="GroupName"/></div>
-                                <div class="group_id"><b>Group ID: </b><xsl:value-of select="GroupID"/></div>
                                 <div class="unit_volume"><b>Unit volume: </b><xsl:value-of select="UnitVolume"/></div>
                                     <!-- <div class="species_id"><xsl:value-of select="Species/SpeciesID"/></div> -->
                                     <div class="species_name"><b>Species: </b><xsl:value-of select="Species/SpeciesName"/></div>
@@ -216,7 +218,7 @@
                                 </div>
                                 </div>
 
-                                <table class="periods">
+                                <table class="periods stripe">
                                     <thead>
                                         <tr>
                                             <th class="first_day">Period start</th>
@@ -291,13 +293,13 @@
                                     <h4>Feed</h4>
                                     <ul class="nav nav-tabs">
                                         <xsl:for-each select="Groups/Group">
-                                            <li><a data-toggle="tab" href="#{generate-id(GroupID)}_f"><xsl:value-of select="UnitName"/> (<xsl:value-of select="FirstDateOfInput"/>)</a></li>
+                                            <li><a data-toggle="tab" href="#{generate-id(GroupID)}_f"><xsl:value-of select="UnitName"/> (<xsl:value-of select="GroupID"/>)</a></li>
                                         </xsl:for-each>
                                     </ul>
                                     <div class="tab-content">
                                         <xsl:for-each select="Groups/Group">
                                             <div id="{generate-id(GroupID)}_f" class="tab-pane fade in">
-                                                <table class="feedtable">
+                                                <table class="feedtable stripe">
                                                     <thead>
                                                         <tr>
                                                             <th class="first_day">Period start</th>
@@ -338,13 +340,13 @@
                                      <h4>Environment records and weight samples</h4>
                                      <ul class="nav nav-tabs">
                                          <xsl:for-each select="Groups/Group">
-                                             <li><a data-toggle="tab" href="#{generate-id(GroupID)}_e"><xsl:value-of select="UnitName"/> (<xsl:value-of select="FirstDateOfInput"/>)</a></li>
+                                             <li><a data-toggle="tab" href="#{generate-id(GroupID)}_e"><xsl:value-of select="UnitName"/> (<xsl:value-of select="GroupID"/>)</a></li>
                                          </xsl:for-each>
                                      </ul>
                                      <div class="tab-content">
                                          <xsl:for-each select="Groups/Group">
                                              <div id="{generate-id(GroupID)}_e" class="tab-pane fade in">
-                                                 <table class="envtable">
+                                                 <table class="envtable stripe">
                                                      <thead>
                                                          <tr>
                                                              <th class="first_day">Period start</th>

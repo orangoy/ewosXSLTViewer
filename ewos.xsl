@@ -134,8 +134,7 @@
                                 </div>
                             </xsl:if>
                             <!-- Groups and periods : -->
-
-                             <div class="collapse" id="transfer_collapse{generate-id(SiteID)}">
+                            <div class="collapse" id="transfer_collapse{generate-id(SiteID)}">
                                  <div class="card card-block">
                                      <h4>Transfers</h4>
                                      <table class="transfertable stripe">
@@ -175,7 +174,6 @@
                                      </table>
                                  </div>
                              </div>
-
                             <div class="collapse" id="group_collapse{generate-id(SiteID)}">
                             <div class="card card-block">
                             <h4>Biomass per group</h4>
@@ -286,8 +284,6 @@
                             </div>
                             </div>
                             </div>
-
-
                             <div class="collapse" id="feed_collapse{generate-id(SiteID)}">
                                 <div class="card card-block">
                                     <h4>Feed</h4>
@@ -330,7 +326,6 @@
                                                     </tbody>
                                                 </table>
                                             </div>
-
                                         </xsl:for-each>
                                     </div>
                                 </div>

@@ -22,11 +22,11 @@ $(document).ready(function () {
             'pageLength',
             {
                 extend: 'excel',
-                title: 'Feeding'
+                title: 'Transfers'
             },
             {
                 extend: 'csv',
-                title: 'Feeding'
+                title: 'Transfers'
             },
             'copy'
         ],
@@ -52,7 +52,6 @@ $(document).ready(function () {
         ]
 
     });
-
     $('.feedtable').DataTable({
         "pageLength": 5,
         "lengthMenu": [[5,10, 25, 50, -1], [5,10, 25, 50, "All"]],
